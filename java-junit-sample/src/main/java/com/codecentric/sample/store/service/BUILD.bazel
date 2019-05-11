@@ -1,0 +1,21 @@
+package(default_visibility = ["//visibility:public"])
+java_library(
+
+    name = "service",
+    srcs = [
+        "//java-junit-sample/src/main/java/com/codecentric/sample/store/service:sources"
+    ],
+    deps = [
+        "//java-junit-sample/src/main/java/com/codecentric/sample/store/model:model" , 
+        "//java-junit-sample/src/main/java/com/codecentric/sample/store/repository:repository" , 
+        "//java-junit-sample/src/main/java/com/codecentric/sample/store/service/external:external" , 
+        "//java-junit-sample/src/main/java/com/codecentric/sample/store/service/tools:tools" , 
+        "//java-junit-sample:main_dependencies"
+    ],
+    runtime_deps = [
+        
+    ],
+    
+)
+
+sources()

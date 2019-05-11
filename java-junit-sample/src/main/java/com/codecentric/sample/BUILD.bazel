@@ -1,0 +1,17 @@
+package(default_visibility = ["//visibility:public"])
+java_library(
+
+    name = "sample",
+    srcs = [
+        "//java-junit-sample/src/main/java/com/codecentric/sample:sources"
+    ],
+    deps = [
+        "//java-junit-sample:main_dependencies"
+    ],
+    runtime_deps = [
+        
+    ],
+    
+)
+
+sources()
