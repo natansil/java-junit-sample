@@ -1,9 +1,9 @@
 package(default_visibility = ["//visibility:public"])
-specs2_unit_test(
-    
-    
-    
+load("//:java_test_disco.bzl", "java_test_all")
+
+java_test_all(
     name = "service",
+    all_test_class = "com.codecentric.sample.store.service.AllTests",
     srcs = [
         "//java-junit-sample/src/test/java/com/codecentric/sample/store/service:sources"
     ],
@@ -21,7 +21,7 @@ specs2_unit_test(
     
     data = ["//java-junit-sample:coordinates"],
     jvm_flags = ["-Dexisting.manifest=$(location //java-junit-sample:coordinates)"],
-     
+
 )
 
 sources()

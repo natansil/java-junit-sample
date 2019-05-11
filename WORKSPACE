@@ -22,7 +22,8 @@ junit_jupiter_java_repositories(
 junit_platform_java_repositories(
     version = JUNIT_PLATFORM_VERSION,
 )
-      
 
+load(":java_test_disco.bzl", "java_test_all_repositories")
+java_test_all_repositories()
 
 
