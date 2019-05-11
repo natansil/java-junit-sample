@@ -1,0 +1,23 @@
+package(default_visibility = ["//visibility:public"])
+load("//:java_test_disco.bzl", "java_test_all")
+
+java_test_all(
+    name = "external",
+    all_test_class = "com.codecentric.sample.store.service.external.AllTests",
+    srcs = [
+        "//java-junit-sample/src/test/java/com/codecentric/sample/store/service/external:sources",
+    ],
+    deps = [
+        "//java-junit-sample/src/main/java/com/codecentric/sample/store/service/external:external" ,
+        "//java-junit-sample:tests_dependencies"
+    ],
+    runtime_deps = [
+
+    ],
+
+    data = ["//java-junit-sample:coordinates"],
+    jvm_flags = ["-Dexisting.manifest=$(location //java-junit-sample:coordinates)"],
+
+)
+
+sources()

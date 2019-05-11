@@ -1,0 +1,15 @@
+package(default_visibility = ["//visibility:public"])
+
+java_library(
+    name = "java_test_discovery",
+    testonly = 1,
+    srcs = [
+        "//tools/java_test_discovery:sources",
+    ],
+    deps = [
+          "@com_google_guava_guava",
+          "@junit_junit",
+    ],
+)
+
+sources()

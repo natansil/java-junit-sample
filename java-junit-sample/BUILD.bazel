@@ -1,0 +1,30 @@
+package(default_visibility = ["//visibility:public"])
+
+java_library(
+    name = "main_dependencies",
+    exports = [
+        "@org_apache_commons_commons_lang3",
+        "@org_scala_lang_scala_library",
+        "@org_springframework_boot_spring_boot_starter_web"
+    ],
+)
+     
+
+
+java_library(
+    name = "tests_dependencies",
+    testonly = 1,
+    exports = [
+        "@junit_junit",
+        "@org_mockito_mockito_core",
+        "@org_powermock_powermock_api_mockito",
+        "@org_powermock_powermock_module_junit4",
+        "main_dependencies"
+    ],
+)
+     
+
+filegroup(
+    name = "coordinates",
+    srcs = ["MANIFEST.MF"],
+)
