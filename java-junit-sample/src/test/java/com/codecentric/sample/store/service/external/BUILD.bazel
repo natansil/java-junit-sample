@@ -1,23 +1,24 @@
 package(default_visibility = ["//visibility:public"])
-specs2_unit_test(
-    
-    
-    
-    name = "external",
-    srcs = [
-        "//java-junit-sample/src/test/java/com/codecentric/sample/store/service/external:sources"
-    ],
+load("@rules_jvm_test_discovery//:java_test_discovery.bzl", "java_test_discovery")
+
+java_library(
+    name = "external_Source",
+    srcs = ["//java-junit-sample/src/test/java/com/codecentric/sample/store/service/external:sources",],
     deps = [
-        "//java-junit-sample/src/main/java/com/codecentric/sample/store/service/external:external" , 
+        "//java-junit-sample/src/main/java/com/codecentric/sample/store/service/external:external" ,
         "//java-junit-sample:tests_dependencies"
     ],
-    runtime_deps = [
-        
-    ],
-    
-    data = ["//java-junit-sample:coordinates"],
-    jvm_flags = ["-Dexisting.manifest=$(location //java-junit-sample:coordinates)"],
-     
+    testonly = 1,
+)
+
+java_test_discovery(
+    name = "external",
+    tests_from = [":external_Source"],
+    size = "small",
+    print_discovered_classes = True,
+    jvm_flags = ["-XX:HeapDumpPath=/some/custom/path"],
+    suffixes = ["Test"],
+    testonly = 1,
 )
 
 sources()

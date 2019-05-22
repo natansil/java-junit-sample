@@ -1,12 +1,9 @@
 package(default_visibility = ["//visibility:public"])
-specs2_unit_test(
-    
-    
-    
-    name = "service",
-    srcs = [
-        "//java-junit-sample/src/test/java/com/codecentric/sample/store/service:sources"
-    ],
+load("@rules_jvm_test_discovery//:java_test_discovery.bzl", "java_test_discovery")
+
+java_library(
+    name = "service_Source",
+    srcs = ["//java-junit-sample/src/test/java/com/codecentric/sample/store/service:sources",],
     deps = [
         "//java-junit-sample/src/main/java/com/codecentric/sample/store/model:model" , 
         "//java-junit-sample/src/main/java/com/codecentric/sample/store/repository:repository" , 
@@ -15,13 +12,18 @@ specs2_unit_test(
         "//java-junit-sample/src/main/java/com/codecentric/sample/store/service:service" , 
         "//java-junit-sample:tests_dependencies"
     ],
-    runtime_deps = [
-        
-    ],
-    
+    testonly = 1,
+)
+
+java_test_discovery(
+    name = "service",
+    tests_from = [":service_Source"],
+    size = "small",
+    print_discovered_classes = True,
+    suffixes = ["Test"],
     data = ["//java-junit-sample:coordinates"],
     jvm_flags = ["-Dexisting.manifest=$(location //java-junit-sample:coordinates)"],
-     
+    testonly = 1,
 )
 
 sources()

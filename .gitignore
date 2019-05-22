@@ -22,3 +22,5 @@ target
 
 # logback
 logback.out.xml
+bazel-*
+.bazelproject
